@@ -1,7 +1,7 @@
 package com.example.ShopAndProductApi.shoptransactions.repositories;
 
 
-import com.example.ShopAndProductApi.entities.Shop;
+import com.example.ShopAndProductApi.ModelsAndEntities.Shop;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;

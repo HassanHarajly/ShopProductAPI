@@ -1,6 +1,6 @@
 package com.example.ShopAndProductApi.producttransactions.repositories;
 
-import com.example.ShopAndProductApi.entities.Product;
+import com.example.ShopAndProductApi.ModelsAndEntities.Product;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;

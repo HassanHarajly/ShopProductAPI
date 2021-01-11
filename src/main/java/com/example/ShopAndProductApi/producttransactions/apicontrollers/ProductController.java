@@ -1,6 +1,6 @@
 package com.example.ShopAndProductApi.producttransactions.apicontrollers;
 
-import com.example.ShopAndProductApi.entities.Product;
+import com.example.ShopAndProductApi.ModelsAndEntities.Product;
 import com.example.ShopAndProductApi.producttransactions.repositories.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.lang.NonNull;

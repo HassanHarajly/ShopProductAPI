@@ -1,4 +1,4 @@
-package com.example.ShopAndProductApi.entities;
+package com.example.ShopAndProductApi.ModelsAndEntities;
 
 
 import lombok.Getter;
