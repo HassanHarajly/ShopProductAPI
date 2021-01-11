@@ -1,15 +1,25 @@
 package com.example.ShopAndProductApi.producttransactions.repositories;
 
 import com.example.ShopAndProductApi.ModelsAndEntities.Product;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+import javax.transaction.Transactional;
 
 import java.util.List;
 
 @Repository
 public interface ProductRepository extends CrudRepository<Product,Integer> {
+
+
+    @Modifying
+@Transactional
+    @Query(value =
+" INSERT INTO products(shop_id,product_name,product_quantity,product_barcode, product_price,latitude,longitude) VALUES ( ?1,?2, ?3, ?4,?5,?6,?7)",
+    nativeQuery = true)
+    void insertNewProduct(int shop_id,String product_name,int product_quantity,String product_barcode,double product_price,double latitude,double longitude);
     @Query(
             value =
                     "SELECT top 20 *,   distance = GEOGRAPHY\\:\\:Point(:user_latitude, :user_longitude, 4326).STDistance(GEOGRAPHY\\:\\:Point(latitude, longitude, 4326)) / 1609.344 from products ORDER BY distance ASC",
