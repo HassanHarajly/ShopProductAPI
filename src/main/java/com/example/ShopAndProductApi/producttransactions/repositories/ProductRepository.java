@@ -1,6 +1,7 @@
 package com.example.ShopAndProductApi.producttransactions.repositories;
 
 import com.example.ShopAndProductApi.ModelsAndEntities.Product;
+import com.example.ShopAndProductApi.ModelsAndEntities.Shop;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -35,4 +36,9 @@ public interface ProductRepository extends CrudRepository<Product,Integer> {
             ,nativeQuery = true)
     List<Product> findByNameAndProximity(@Param("product_name") String product_name,@Param("user_latitude") Double userlatitude,@Param("user_longitude") Double userlongitude,@Param("distance_limit") Double distance_limit);
 
+
+    @Query(value = "SELECT *,(-1) as distance FROM products",
+            nativeQuery = true
+    )
+    List<Product> findAll();
 }
