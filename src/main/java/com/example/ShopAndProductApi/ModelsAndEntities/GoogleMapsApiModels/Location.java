@@ -1,4 +1,4 @@
-package com.example.ShopAndProductApi.ModelsAndEntities.GoogleMapsApi;
+package com.example.ShopAndProductApi.ModelsAndEntities.GoogleMapsApiModels;
 
 import lombok.Getter;
 import lombok.Setter;

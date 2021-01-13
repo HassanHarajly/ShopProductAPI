@@ -1,7 +1,6 @@
 package com.example.ShopAndProductApi.shoptransactions.services;
 
-import com.example.ShopAndProductApi.ModelsAndEntities.GeoCacheResponse;
-import com.example.ShopAndProductApi.ModelsAndEntities.GoogleMapsApi.MapsResponse;
+import com.example.ShopAndProductApi.ModelsAndEntities.GoogleMapsApiModels.MapsResponse;
 import org.springframework.web.client.RestTemplate;
 
 public class GeoCacheApiService {
