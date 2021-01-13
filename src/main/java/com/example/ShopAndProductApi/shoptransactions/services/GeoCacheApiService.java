@@ -1,19 +1,20 @@
 package com.example.ShopAndProductApi.shoptransactions.services;
 
 import com.example.ShopAndProductApi.ModelsAndEntities.GeoCacheResponse;
+import com.example.ShopAndProductApi.ModelsAndEntities.GoogleMapsApi.MapsResponse;
 import org.springframework.web.client.RestTemplate;
 
 public class GeoCacheApiService {
     //todo add api key to a more secure place like github credentials.
-    private String positionStackGeoCacheUrl="http://api.positionstack.com/v1/forward?access_key=5eede26621f25ae287cc4c6a50b136d9"
+    private String positionStackGeoCacheUrl="https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyCCRGeNH19EK4lOvPQNucL4MP3Iolzsyxo"
             ;
     RestTemplate restTemplate = new RestTemplate();
 
-    public GeoCacheResponse getApiResponse(String address)
+    public MapsResponse getApiResponse(String address)
     {
-        String URL = positionStackGeoCacheUrl + "&query="+address+"country=usa";
-        GeoCacheResponse data = restTemplate
-                .getForObject(URL, GeoCacheResponse.class);
+        String URL = positionStackGeoCacheUrl + "&address=" + address;
+        MapsResponse data = restTemplate
+                .getForObject(URL, MapsResponse.class);
 
         return data;
     }
