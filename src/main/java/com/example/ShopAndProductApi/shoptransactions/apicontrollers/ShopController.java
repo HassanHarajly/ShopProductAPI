@@ -14,7 +14,8 @@ import java.util.List;
 @RequestMapping("/api/v1/")
 @RestController
 public class ShopController {
-    GeoCacheApiService geoCacheApiService = new GeoCacheApiService();
+    @Autowired
+    GeoCacheApiService geoCacheApiService;
     @Autowired
     ShopRepository shopRepository;
     @PostMapping(path = "addNewShop")
