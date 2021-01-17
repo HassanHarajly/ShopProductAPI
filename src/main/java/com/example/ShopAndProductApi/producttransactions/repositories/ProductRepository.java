@@ -18,9 +18,9 @@ public interface ProductRepository extends CrudRepository<Product,Integer> {
     @Modifying
 @Transactional
     @Query(value =
-" INSERT INTO products(shop_id,product_name,product_quantity,product_barcode, product_price,latitude,longitude) VALUES ( ?1,?2, ?3, ?4,?5,?6,?7)",
+    "INSERT INTO products(shop_id,product_name,product_quantity,product_barcode, product_price,latitude,longitude) SELECT ?1,?2, ?3, ?4,?5, SHOP_LATITUDE, SHOP_LONGITUDE FROM shops where Shops.id = ?1",
     nativeQuery = true)
-    void insertNewProduct(int shop_id,String product_name,int product_quantity,String product_barcode,double product_price,double latitude,double longitude);
+    void insertNewProduct(int shop_id,String product_name,int product_quantity,String product_barcode,double product_price);
     @Query(
             value =
                     "SELECT top 20 *,   distance = GEOGRAPHY\\:\\:Point(:user_latitude, :user_longitude, 4326).STDistance(GEOGRAPHY\\:\\:Point(latitude, longitude, 4326)) / 1609.344 from products ORDER BY distance ASC",
