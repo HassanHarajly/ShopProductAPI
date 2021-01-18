@@ -27,7 +27,7 @@ public class ProductController {
     @PostMapping("addNewProduct")
     public void insertNewProduct(@RequestBody @NonNull Product product) {
         productRepository.insertNewProduct(product.getShop_id(),product.getProduct_name(),product.getProduct_quantity()
-        ,product.getProduct_barcode(),product.getProduct_price());
+        ,product.getProduct_barcode(),product.getProduct_price(),product.getImage());
        // productRepository.save(product);
     }
 

@@ -22,4 +22,5 @@ public class Product {
     double latitude;
     double longitude;
     double distance;
+    String image;
 }
