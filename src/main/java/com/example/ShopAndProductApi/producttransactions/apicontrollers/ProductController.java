@@ -23,7 +23,7 @@ public class ProductController {
         });
         return products;
     }
-
+    @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping("addNewProduct")
     public void insertNewProduct(@RequestBody @NonNull Product product) {
         productRepository.insertNewProduct(product.getShop_id(),product.getProduct_name(),product.getProduct_quantity()
