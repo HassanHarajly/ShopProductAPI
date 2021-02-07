@@ -27,9 +27,7 @@ public class ShopController {
 
     @GetMapping(path = "getAllShops")
     public List<Shop> getAllShops() {
-        final List<Shop> shops = new ArrayList<>();
-        shopRepository.findAll().forEach(Shop -> shops.add(Shop));
-        return shops;
+        return shopRepository.findAll();
     }
 
     @GetMapping(path = "getShopByName")

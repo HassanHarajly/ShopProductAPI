@@ -8,14 +8,14 @@ import org.springframework.web.client.RestTemplate;
 @Service
 public class GeoCacheApiService {
     //todo add api key to a more secure place like github credentials.
-    private String positionStackGeoCacheUrl="https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyCCRGeNH19EK4lOvPQNucL4MP3Iolzsyxo"
+    private String googleAPIGeoCacheUrl ="https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyCCRGeNH19EK4lOvPQNucL4MP3Iolzsyxo"
             ;
     @Autowired
     RestTemplate restTemplate;
 
     public MapsResponse getApiResponse(String address)
     {
-        String URL = positionStackGeoCacheUrl + "&address=" + address;
+        String URL = googleAPIGeoCacheUrl + "&address=" + address;
         MapsResponse data = restTemplate
                 .getForObject(URL, MapsResponse.class);
 
