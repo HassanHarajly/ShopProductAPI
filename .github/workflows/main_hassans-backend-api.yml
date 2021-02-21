@@ -21,8 +21,8 @@ jobs:
       with:
         java-version: '11'
 
-    - name: Build with Maven
-      run: mvn clean install
+    - name: Build with gradle wrapper
+      run: gradlew build
 
     - name: Deploy to Azure Web App
       uses: azure/webapps-deploy@v2
@@ -30,4 +30,4 @@ jobs:
         app-name: 'hassans-backend-api'
         slot-name: 'production'
         publish-profile: ${{ secrets.AzureAppService_PublishProfile_6bc6fbbce2d5400aac487c79cd53ac32 }}
-        package: '${{ github.workspace }}/target/*.jar'
+        package: '${{ github.workspace }}/build/libs/*.jar'
