@@ -17,11 +17,7 @@ public class ProductController {
 
     @GetMapping("getAllProducts")
     List<Product> getAllProducts() {
-        List<Product> products = new ArrayList<>();
-        productRepository.findAll().forEach(shop -> {
-            products.add(shop);
-        });
-        return products;
+        return productRepository.findAll();
     }
     @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping("addNewProduct")
