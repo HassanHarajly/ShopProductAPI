@@ -22,8 +22,8 @@ public class ShopController {
     @PostMapping(path = "addNewShop")
     public void addNewShop(@RequestBody @NonNull Shop shop) {
         MapsResponse mapsResponse = geoCacheApiService.getApiResponse(shop.getShop_street_address()+'+'+shop.getShop_state()+'+'+shop.getShop_zip());
-        shopRepository.insertshop(shop.getShop_name(),shop.getShop_street_address(),shop.getShop_zip(),shop.getShop_state(),mapsResponse.getResults().get(0).getGeometry().getLocation().getLat()
-                ,mapsResponse.getResults().get(0).getGeometry().getLocation().getLng());
+        shopRepository.insertshop(shop.getShop_name(),shop.getShop_street_address(),shop.getShop_zip(), "mi",83.11
+                ,99.25);
     }
 
     @GetMapping(path = "getAllShops")
