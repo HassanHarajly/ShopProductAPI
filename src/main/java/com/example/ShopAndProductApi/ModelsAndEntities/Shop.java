@@ -6,9 +6,8 @@ import lombok.Setter;
 
 import javax.persistence.*;
 
-@Entity
-@Table(name = "shops")
 @Getter
+@MappedSuperclass
 @Setter
 @NoArgsConstructor
 public class Shop {
@@ -21,7 +20,7 @@ public class Shop {
     private String shop_state;
     private double SHOP_LATITUDE;
     private double SHOP_LONGITUDE;
-    private double distance;
+
 
     public Shop(String shop_name, String shop_street_address, String shop_zip, String shop_state, double SHOP_LATITUDE, double SHOP_LONGITUDE) {
         this.shop_name = shop_name;

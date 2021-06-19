@@ -2,6 +2,8 @@ package com.example.ShopAndProductApi.shoptransactions.repositories;
 
 
 import com.example.ShopAndProductApi.ModelsAndEntities.Shop;
+import com.example.ShopAndProductApi.ModelsAndEntities.ShopWithDistance;
+import com.example.ShopAndProductApi.ModelsAndEntities.shopWithoutDistance;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -12,7 +14,7 @@ import javax.transaction.Transactional;
 import java.util.List;
 
 @Repository
-public interface ShopRepository extends CrudRepository<Shop, Integer> {
+public interface ShopRepository extends CrudRepository<shopWithoutDistance, Integer> {
 
 
     @Query(
@@ -30,14 +32,15 @@ public interface ShopRepository extends CrudRepository<Shop, Integer> {
 
     @Query(
             value =
-                    "SELECT top 20 *,   calculatedDistance = GEOGRAPHY\\:\\:Point(:user_latitude, :user_longitude, 4326).STDistance(GEOGRAPHY\\:\\:Point(SHOP_LATITUDE, SHOP_LONGITUDE, 4326)) / 1609.344 from shops ORDER BY calculatedDistance ASC",
+                    "SELECT top 20 *, Calculated_Distance = GEOGRAPHY\\:\\:Point(:user_latitude, :user_longitude, 4326).STDistance(GEOGRAPHY\\:\\:Point(SHOP_LATITUDE, SHOP_LONGITUDE, 4326)) / 1609.344 from shops ORDER BY Calculated_Distance ASC",
             nativeQuery = true)
-    List<Shop> getProximalShops(@Param("user_latitude") Double userlatitude,@Param("user_longitude") Double userlongitude);
+    List<ShopWithDistance> getProximalShops(@Param("user_latitude") Double userlatitude, @Param("user_longitude") Double userlongitude);
 
 
-    @Query(value = "SELECT *,(-1) as distance FROM shops",
+    @Override
+    @Query(value = "SELECT * FROM dbo.shops",
             nativeQuery = true
     )
-    List<Shop> findAll();
+    List<shopWithoutDistance> findAll();
 
 }
