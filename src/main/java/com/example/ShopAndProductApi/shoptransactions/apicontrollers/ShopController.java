@@ -25,19 +25,17 @@ public class ShopController {
     @Autowired
     ShopWithDistanceRepository shopWithDistanceRepository;
     @PostMapping(path = "addNewShop")
-    public void addNewShop(@RequestBody @NonNull Shop shop) {
-        MapsResponse mapsResponse = geoCacheApiService.getApiResponse(shop.getShop_street_address()+'+'+shop.getShop_state()+'+'+shop.getShop_zip());
-        shopRepository.insertshop(shop.getShop_name(),shop.getShop_street_address(),shop.getShop_zip(), "mi",83.11
-                ,99.25);
+    public void addNewShop(@RequestBody @NonNull shopWithoutDistance shop) {
+        shopRepository.save(shop);
     }
 
     @GetMapping(path = "getAllShops")
     public List<shopWithoutDistance> getAllShops() {
-        return shopRepository.findAll();
+        return (List<shopWithoutDistance>) shopRepository.findAll();
     }
 
     @GetMapping(path = "getShopByName")
-    public List<Shop> getShopByName(@RequestParam String name) {
+    public List<shopWithoutDistance> getShopByName(@RequestParam String name) {
         return shopRepository.findByName(name);
     }
 
