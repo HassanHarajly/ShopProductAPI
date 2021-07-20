@@ -1,13 +1,8 @@
 package com.example.ShopAndProductApi.shoptransactions.apicontrollers;
-
-import com.example.ShopAndProductApi.ModelsAndEntities.GeoCacheResponse;
-import com.example.ShopAndProductApi.ModelsAndEntities.GoogleMapsApiModels.MapsResponse;
-import com.example.ShopAndProductApi.ModelsAndEntities.Shop;
 import com.example.ShopAndProductApi.ModelsAndEntities.ShopWithDistance;
 import com.example.ShopAndProductApi.ModelsAndEntities.shopWithoutDistance;
 import com.example.ShopAndProductApi.shoptransactions.repositories.ShopRepository;
 import com.example.ShopAndProductApi.shoptransactions.repositories.ShopWithDistanceRepository;
-import com.example.ShopAndProductApi.shoptransactions.services.GeoCacheApiService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.lang.NonNull;
 import org.springframework.web.bind.annotation.*;
@@ -18,8 +13,7 @@ import java.util.List;
 @RequestMapping("/api/v1/")
 @RestController
 public class ShopController {
-    @Autowired
-    GeoCacheApiService geoCacheApiService;
+
     @Autowired
     ShopRepository shopRepository;
     @Autowired
