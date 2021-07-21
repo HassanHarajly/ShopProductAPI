@@ -15,14 +15,9 @@ public class Shop {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private int id;
     private String shop_name;
-    private double SHOP_LATITUDE;
-    private double SHOP_LONGITUDE;
+    private double shop_latitude;
+    private double shop_longitude;
 
 
-    public Shop(String shop_name, double SHOP_LATITUDE, double SHOP_LONGITUDE) {
-        this.shop_name = shop_name;
-        this.SHOP_LATITUDE = SHOP_LATITUDE;
-        this.SHOP_LONGITUDE = SHOP_LONGITUDE;
-    }
 
 }
