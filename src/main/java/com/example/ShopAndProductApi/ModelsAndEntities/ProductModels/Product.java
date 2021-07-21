@@ -1,14 +1,16 @@
-package com.example.ShopAndProductApi.ModelsAndEntities;
+package com.example.ShopAndProductApi.ModelsAndEntities.ProductModels;
 
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
 
-@Entity
 @Getter
+@MappedSuperclass
 @Setter
+@NoArgsConstructor
 @Table(name = "products")
 public class Product {
     @Id
@@ -21,6 +23,5 @@ public class Product {
     double product_price;
     double latitude;
     double longitude;
-    double distance;
     String image;
 }
